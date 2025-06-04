@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Smart RAG Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="main-container fade-in">
+        <h1><i class="fas fa-robot"></i> AI Document Assistant</h1>
+
+        <div class="content-wrapper">
+            <!-- Left side: PDF Upload -->
+            <div class="left-panel">
+                <div class="upload-container">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload Documents</h2>
+                    <form action="/" method="post" enctype="multipart/form-data">
+                        <label for="file">📄 Select PDF</label>
+                        <input type="file" name="file" id="file" required>
+                        <button type="submit"><i class="fas fa-upload"></i> Upload & Process</button>
+                    </form>
+
+                    <!-- Display uploaded files -->
+                    <div class="file-list">
+                        {% if uploaded_filename %}
+                        <div class="file-item">
+                            <span class="file-icon"><i class="fas fa-file-pdf"></i></span>
+                            <span class="file-name">{{ uploaded_filename }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side: Answers and question input -->
+            <div class="right-panel">
+
+                {% if message %}
+                <div class="message success fade-in">
+                    <i class="fas fa-check-circle"></i> {{ message }}
+                </div>
+                {% endif %}
+
+                <!-- Answers display at the top -->
+                <div class="answers-container">
+                    {% if answer %}
+                    <div class="answer fade-in">
+                        <h2><i class="fas fa-lightbulb" ></i> Answer</h2>
+                        <div class="answer-content">{{ answer|safe }}</div>
+                    </div>
+                    {% else %}
+                    <div class="empty-answer">
+                        <i class="fas fa-satellite-dish"></i>
+                        <p>Upload a document and ask a question to get AI-powered insights</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Question input underneath answers -->
+                <div class="question-container">
+                    <form action="/" method="post">
+                        <input type="text" name="question" id="question"
+                            placeholder="Ask anything about your document..." required>
+                        <button type="submit"><i class="fas fa-lightbulb"></i> Ask AI</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
