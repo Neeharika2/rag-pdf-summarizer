@@ -64,6 +64,3 @@ python app.py
 - Vector database (e.g., FAISS, Pinecone)
 - LLM integration (e.g., OpenAI API)
 
-## License
-
-[Add your license here]
