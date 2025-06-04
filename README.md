@@ -13,7 +13,7 @@ A Retrieval-Augmented Generation (RAG) application that allows users to upload d
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone <[repository-url](https://github.com/Neeharika2/rag-pdf-summarizer)>
 cd rag_application
 ```
 
