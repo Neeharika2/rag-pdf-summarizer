@@ -54,8 +54,7 @@ python app.py
 - `app.py`: Main application file
 - `static/`: Static files (CSS, JavaScript)
 - `templates/`: HTML templates
-- `models/`: Contains ML models for RAG functionality
-- `utils/`: Utility functions
+- `uploads/`: Contains uploaded files
 
 ## Requirements
 
