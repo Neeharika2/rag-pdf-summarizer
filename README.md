@@ -1,13 +1,31 @@
-# RAG Application
+# 🤖 RAG-Powered Document Question Answering App
 
-A Retrieval-Augmented Generation (RAG) application that allows users to upload documents and ask questions about their content.
+An AI-powered Retrieval-Augmented Generation (RAG) application that allows users to **upload custom documents (PDFs)** and interactively **ask questions** about their content using **LLMs**, **vector embeddings**, and **natural language processing**.
 
-## Features
+---
 
-- Document upload and management
-- Natural language question answering based on uploaded documents
-- Clean and responsive user interface
-- Real-time answers
+## 🚀 Features
+
+- 📄 Upload and manage PDF documents
+- 🧠 Ask natural language questions based on document content
+- 🔎 Embedding-based document chunking and semantic retrieval using **FAISS**
+- 💬 Context-aware LLM responses via **OpenAI / HuggingFace Transformers**
+- ⚙️ Powered by **LangChain** for modular RAG pipeline
+- 📱 Clean, responsive web UI built with Flask & HTML templates
+
+---
+
+## 🧰 Tech Stack
+
+- **Python 3.8+**
+- **Flask** (for web server and routing)
+- **LangChain** (for chaining document retriever + LLM)
+- **Vector DB:** FAISS (can be extended to Pinecone, ChromaDB, etc.)
+- **LLM Providers:** OpenAI API / HuggingFace Transformers
+- **PDF Parsing:** PyMuPDF / pdfminer
+- **Env Handling:** `dotenv`
+
+---
 
 ## Installation
 
@@ -51,10 +69,24 @@ python app.py
 
 ## Project Structure
 
-- `app.py`: Main application file
-- `static/`: Static files (CSS, JavaScript)
-- `templates/`: HTML templates
-- `uploads/`: Contains uploaded files
+    rag_application/
+    │
+    ├── app.py                # Flask application entry point
+    ├── rag_utils.py          # LangChain + RAG setup (retriever, prompt chain)
+    ├── templates/
+    │   └── index.html        # UI template
+    ├── static/
+    │   └── style.css         # Custom CSS
+    ├── uploads/              # Uploaded PDF storage
+    ├── requirements.txt
+    ├── .env
+
+## How It Works (Behind the Scenes)
+- PDF Upload: User uploads a document
+- Chunking & Embedding: PDF is split into chunks & embedded using OpenAI/HuggingFace embeddings  
+- Vector Storage: Embeddings are stored/retrieved using FAISS 
+- Query Handling: User question is embedded and top relevant chunks are retrieved  
+- LLM Generation: LLM generates a contextual, semantic answer
 
 ## Requirements
 
